@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ConsultationModal } from "@/components/consultation-modal";
+import { HeroBackgroundVideo } from "@/components/hero-background-video";
 import { SiteShell } from "@/components/site-shell";
 import {
   company,
@@ -17,8 +18,10 @@ const metrics = [
 export default function Home() {
   return (
     <SiteShell>
-      <section className="grid gap-10 pb-16 pt-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-        <div className="space-y-8">
+      <section className="relative overflow-hidden pb-16 pt-8">
+        <HeroBackgroundVideo />
+        <div className="relative z-10 grid gap-10 px-6 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-8 lg:py-12">
+          <div className="space-y-8">
           <span className="inline-flex rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--accent-text)]">
             Trusted Counsel for Complex Legal Matters
           </span>
@@ -42,51 +45,52 @@ export default function Home() {
               View Practice Areas
             </Link>
           </div>
-        </div>
+          </div>
 
-        <div className="rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-2xl shadow-black/20 backdrop-blur">
-          <div className="space-y-6">
-            <div className="flex items-center justify-between border-b border-[var(--border)] pb-5">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-muted)]">
-                  Practice Focus
-                </p>
-                <h2 className="mt-2 text-2xl font-semibold text-[var(--text-primary)]">
-                  Corporate, regulatory, and dispute-sensitive counsel
-                </h2>
-              </div>
-              <div className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-medium text-[var(--accent-text)]">
-                Client Matters Open
-              </div>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-4"
-                >
-                  <p className="text-2xl font-semibold text-[var(--text-primary)]">
-                    {metric.value}
+          <div className="rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-2xl shadow-black/20 backdrop-blur">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-[var(--border)] pb-5">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-muted)]">
+                    Practice Focus
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--text-muted)]">
-                    {metric.label}
-                  </p>
+                  <h2 className="mt-2 text-2xl font-semibold text-[var(--text-primary)]">
+                    Corporate, regulatory, and dispute-sensitive counsel
+                  </h2>
                 </div>
-              ))}
-            </div>
-            <div className="rounded-2xl border border-[var(--accent-border)] bg-[var(--accent-soft)] p-5">
-              <p className="text-sm font-medium uppercase tracking-[0.25em] text-[var(--accent-text)]">
-                Why Clients Retain Us
-              </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {differentiators.map((item) => (
+                <div className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-medium text-[var(--accent-text)]">
+                  Client Matters Open
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {metrics.map((metric) => (
                   <p
-                    key={item}
-                    className="rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text-soft)]"
+                    key={metric.label}
+                    className="rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-4"
                   >
-                    {item}
+                    <span className="block text-2xl font-semibold text-[var(--text-primary)]">
+                      {metric.value}
+                    </span>
+                    <span className="mt-2 block text-sm leading-6 text-[var(--text-muted)]">
+                      {metric.label}
+                    </span>
                   </p>
                 ))}
+              </div>
+              <div className="rounded-2xl border border-[var(--accent-border)] bg-[var(--accent-soft)] p-5">
+                <p className="text-sm font-medium uppercase tracking-[0.25em] text-[var(--accent-text)]">
+                  Why Clients Retain Us
+                </p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {differentiators.map((item) => (
+                    <p
+                      key={item}
+                      className="rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text-soft)]"
+                    >
+                      {item}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

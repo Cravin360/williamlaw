@@ -34,17 +34,22 @@ export function ThemeToggle() {
       type="button"
       aria-label={`Switch to ${nextTheme} mode`}
       aria-pressed={mounted ? theme === "dark" : true}
+      title={`Switch to ${nextTheme} mode`}
       onClick={() => {
         const updatedTheme = theme === "dark" ? "light" : "dark";
         setTheme(updatedTheme);
         applyTheme(updatedTheme);
       }}
-      className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full border border-[var(--accent-border)] bg-[var(--surface-footer)] px-4 py-3 text-sm font-medium text-[var(--text-soft)] shadow-[0_20px_40px_var(--shadow-color)] transition hover:bg-[var(--surface-hover)] hover:text-[var(--text-primary)]"
+      className="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--accent-border)] bg-[var(--surface-footer)] shadow-[0_20px_40px_var(--shadow-color)] transition hover:scale-[1.03] hover:bg-[var(--surface-hover)]"
     >
-      <span>{mounted ? nextTheme : "Theme"}</span>
-      <span className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
-        Mode
-      </span>
+      <img
+        src="/favicon.ico"
+        alt=""
+        aria-hidden="true"
+        className={`h-7 w-7 rounded-sm object-contain transition ${
+          mounted && theme === "light" ? "brightness-90" : "brightness-110"
+        }`}
+      />
     </button>
   );
 }
