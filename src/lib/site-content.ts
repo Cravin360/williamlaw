@@ -1,5 +1,5 @@
 export const company = {
-  name: "William Law",
+  name: "William & Dexter",
   tagline: "Strategic counsel for regulated growth.",
   description:
     "A modern legal practice built for founders, investors, and operators navigating risk, transactions, and expansion.",

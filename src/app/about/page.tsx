@@ -19,7 +19,7 @@ export default function AboutPage() {
             A law practice grounded in judgment, service, and preparation.
           </h1>
           <p className="text-lg leading-8 text-[var(--text-secondary)]">
-            William Law serves clients who need careful legal analysis,
+            William & Dexter serves clients who need careful legal analysis,
             practical advice, and responsive counsel. The practice is built on
             close client relationships, disciplined advocacy, and dependable
             execution across sensitive matters.

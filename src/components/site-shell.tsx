@@ -65,7 +65,7 @@ export function SiteShell({ children }: SiteShellProps) {
                     {company.name}
                   </p>
                   <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                    Counselors at Law
+                    Attonery at Law
                   </p>
                 </div>
               </div>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: `${company.name} | Counselors at Law`,
+    default: `${company.name} | Attonery at Law`,
     template: `%s | ${company.name}`,
   },
   description:
@@ -43,9 +43,7 @@ export default function RootLayout({
                   var theme =
                     storedTheme === "light" || storedTheme === "dark"
                       ? storedTheme
-                      : window.matchMedia("(prefers-color-scheme: light)").matches
-                        ? "light"
-                        : "dark";
+                      : "dark";
                   document.documentElement.dataset.theme = theme;
                 } catch (error) {}
               })();
