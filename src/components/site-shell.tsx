@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { company, navigation } from "@/lib/site-content";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -11,25 +12,47 @@ type SiteShellProps = {
 
 export function SiteShell({ children }: SiteShellProps) {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_var(--shell-radial),_transparent_36%),linear-gradient(180deg,_var(--shell-gradient-start)_0%,_var(--shell-gradient-mid)_44%,_var(--shell-gradient-end)_100%)] text-[var(--foreground)] transition-colors">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-5 sm:px-8 lg:px-12">
-        <header className="sticky top-4 z-20 mb-10 rounded-full border border-[var(--accent-border)] bg-[var(--surface-header)] px-5 py-4 shadow-[0_18px_45px_var(--shadow-color)] backdrop-blur">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] text-sm font-semibold tracking-[0.3em] text-[var(--accent-text)]">
-                WL
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[var(--text-primary)]">
-                  {company.name}
-                </p>
-                <p className="text-xs text-[var(--text-muted)]">{company.tagline}</p>
-              </div>
-            </Link>
+        <header className="sticky top-4 z-20 mb-10 rounded-[2rem] border border-[var(--accent-border)] bg-[var(--surface-header)] px-5 py-4 shadow-[0_18px_45px_var(--shadow-color)] backdrop-blur lg:rounded-full">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between gap-4">
+              <Link href="/" className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] text-sm font-semibold tracking-[0.3em] text-[var(--accent-text)]">
+                  WL
+                </div>
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[var(--text-primary)]">
+                    {company.name}
+                  </p>
+                  <p className="text-xs text-[var(--text-muted)]">{company.tagline}</p>
+                </div>
+              </Link>
 
-            <nav className="flex flex-wrap items-center gap-2 text-sm text-[var(--text-secondary)]">
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen((current) => !current)}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--accent-border)] bg-[var(--surface)] text-[var(--text-primary)] transition hover:bg-[var(--surface-hover)] lg:hidden"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
+                aria-label="Toggle navigation menu"
+              >
+                <span className="flex flex-col gap-1.5">
+                  <span className="h-0.5 w-5 rounded-full bg-current" />
+                  <span className="h-0.5 w-5 rounded-full bg-current" />
+                  <span className="h-0.5 w-5 rounded-full bg-current" />
+                </span>
+              </button>
+            </div>
+
+            <nav className="hidden flex-wrap items-center gap-2 text-sm text-[var(--text-secondary)] lg:flex">
               {navigation.map((item) => {
                 const active = pathname === item.href;
 
@@ -48,6 +71,32 @@ export function SiteShell({ children }: SiteShellProps) {
                 );
               })}
             </nav>
+
+            {isMenuOpen ? (
+              <nav
+                id="mobile-navigation"
+                className="grid gap-2 rounded-[1.75rem] border border-[var(--border)] bg-[var(--surface)] p-3 lg:hidden"
+              >
+                {navigation.map((item) => {
+                  const active = pathname === item.href;
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`rounded-2xl px-4 py-3 text-sm transition ${
+                        active
+                          ? "bg-[var(--accent)] text-[var(--accent-contrast)]"
+                          : "text-[var(--text-secondary)] hover:bg-[var(--surface-hover)] hover:text-[var(--text-primary)]"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+            ) : null}
           </div>
         </header>
 
