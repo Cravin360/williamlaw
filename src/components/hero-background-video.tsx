@@ -10,7 +10,7 @@ export function HeroBackgroundVideo() {
         playsInline
         preload="metadata"
       >
-        <source src="/hero-lawyer-team.mp4" type="video/mp4" />
+        <source src="/The Strategic Briefing_720p.mp4" type="video/mp4" />
       </video>
       <div
         className="absolute inset-0"
