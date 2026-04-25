@@ -99,18 +99,22 @@ export default function JoinPage() {
         </div>
 
         <div className="rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[0_20px_60px_var(--shadow-color)]">
-          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)] bg-[linear-gradient(135deg,rgba(201,168,111,0.18),rgba(19,27,38,0.78))]">
-            <div className="aspect-[4/5] w-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.18))]" />
+          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)]">
+            <img
+              src="/images/join-hero.svg"
+              alt="Join William and Dexter"
+              className="aspect-[4/5] w-full object-cover"
+            />
             <div className="absolute inset-x-5 top-5 rounded-full border border-white/15 bg-black/25 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/80 backdrop-blur">
-              Dummy Team Image
+              Join William & Dexter
             </div>
             <div className="absolute inset-x-5 bottom-5 rounded-[1.5rem] border border-white/10 bg-black/35 p-5 backdrop-blur">
               <p className="text-xs uppercase tracking-[0.24em] text-white/70">
-                Join Page Placeholder
+                Careers and Growth
               </p>
               <p className="mt-3 max-w-sm text-sm leading-7 text-white/85">
-                Replace this block with recruitment photography, team portraits,
-                or a branded campaign image when ready.
+                A visual panel for the firm’s recruitment, consultancy, and
+                growth story.
               </p>
             </div>
           </div>

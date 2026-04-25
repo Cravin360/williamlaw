@@ -1,32 +1,6 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
-
-const lawyers = [
-  {
-    name: "William Carter",
-    role: "Founding Partner",
-    focus: "Corporate, governance, and strategic transactions",
-    bio: "William advises founders, boards, and investors on growth-stage decisions, complex transactions, and sensitive legal risk. His practice is built around commercial clarity, disciplined execution, and steady leadership when the stakes are high.",
-  },
-  {
-    name: "Dexter Reid",
-    role: "Managing Partner",
-    focus: "Disputes, regulatory strategy, and crisis response",
-    bio: "Dexter works with clients facing contentious issues, regulatory scrutiny, and business-critical disputes. He is known for direct advice, careful preparation, and a practical approach to protecting client interests.",
-  },
-  {
-    name: "Amelia Grant",
-    role: "Partner",
-    focus: "Employment, investigations, and workplace risk",
-    bio: "Amelia supports leadership teams on internal investigations, executive transitions, policy reviews, and employment-related disputes. She combines legal precision with a calm, business-focused style.",
-  },
-  {
-    name: "Samuel Hayes",
-    role: "Partner",
-    focus: "Commercial contracts, technology, and compliance",
-    bio: "Samuel helps businesses structure contracts, strengthen operational controls, and navigate legal issues that arise in fast-moving commercial environments. His advice is designed to be clear, usable, and scalable.",
-  },
-];
+import { lawyers } from "@/lib/lawyers";
 
 const commitments = [
   "Senior attention on every instruction",
@@ -42,7 +16,34 @@ const sectors = [
   "Investors, operators, and established enterprises",
 ];
 
-export default function OurLawyersPage() {
+const LAWYERS_PER_PAGE = 4;
+
+function getPageHref(page: number) {
+  return page === 1 ? "/our-lawyers" : `/our-lawyers?page=${page}`;
+}
+
+type OurLawyersPageProps = {
+  searchParams?: Promise<{
+    page?: string | string[];
+  }>;
+};
+
+export default async function OurLawyersPage({
+  searchParams,
+}: OurLawyersPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const rawPage = Array.isArray(resolvedSearchParams?.page)
+    ? resolvedSearchParams.page[0]
+    : resolvedSearchParams?.page;
+  const requestedPage = Number.parseInt(rawPage ?? "1", 10);
+  const totalPages = Math.max(1, Math.ceil(lawyers.length / LAWYERS_PER_PAGE));
+  const currentPage =
+    Number.isFinite(requestedPage) && requestedPage > 0
+      ? Math.min(requestedPage, totalPages)
+      : 1;
+  const startIndex = (currentPage - 1) * LAWYERS_PER_PAGE;
+  const visibleLawyers = lawyers.slice(startIndex, startIndex + LAWYERS_PER_PAGE);
+
   return (
     <SiteShell>
       <section className="grid gap-8 py-10 lg:grid-cols-[1.05fr_0.95fr]">
@@ -84,12 +85,19 @@ export default function OurLawyersPage() {
       </section>
 
       <section className="py-8">
-        <div className="grid gap-6 lg:grid-cols-2">
-          {lawyers.map((lawyer) => (
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {visibleLawyers.map((lawyer) => (
             <article
-              key={lawyer.name}
+              key={lawyer.slug}
               className="rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-8 shadow-[0_20px_50px_var(--shadow-color)]"
             >
+              <div className="mb-6 overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)]">
+                <img
+                  src={lawyer.imageSrc}
+                  alt={lawyer.name}
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm uppercase tracking-[0.24em] text-[var(--accent-text)]">
@@ -107,22 +115,57 @@ export default function OurLawyersPage() {
                 </div>
               </div>
 
-              <p className="mt-5 text-sm uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                {lawyer.focus}
-              </p>
-              <p className="mt-5 leading-7 text-[var(--text-secondary)]">
-                {lawyer.bio}
-              </p>
               <div className="mt-6">
                 <Link
-                  href="/contact"
+                  href={`/our-lawyers/${lawyer.slug}`}
                   className="inline-flex rounded-full border border-[var(--accent-border)] px-5 py-2.5 text-sm font-medium text-[var(--text-primary)] transition hover:bg-[var(--surface-hover)]"
                 >
-                  Request an Introduction
+                  View Profile
                 </Link>
               </div>
             </article>
           ))}
+        </div>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-[1.75rem] border border-[var(--border)] bg-[var(--surface)] px-6 py-4 shadow-[0_16px_40px_var(--shadow-color)]">
+          <p className="text-sm text-[var(--text-muted)]">
+            Page {currentPage} of {totalPages}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {currentPage > 1 ? (
+              <Link
+                href={getPageHref(currentPage - 1)}
+                className="rounded-full border border-[var(--accent-border)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition hover:bg-[var(--surface-hover)]"
+              >
+                Previous
+              </Link>
+            ) : null}
+            {Array.from({ length: totalPages }, (_, index) => {
+              const page = index + 1;
+              const active = page === currentPage;
+
+              return (
+                <Link
+                  key={page}
+                  href={getPageHref(page)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    active
+                      ? "bg-[var(--accent)] text-[var(--accent-contrast)]"
+                      : "border border-[var(--accent-border)] text-[var(--text-primary)] hover:bg-[var(--surface-hover)]"
+                  }`}
+                >
+                  {page}
+                </Link>
+              );
+            })}
+            {currentPage < totalPages ? (
+              <Link
+                href={getPageHref(currentPage + 1)}
+                className="rounded-full border border-[var(--accent-border)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition hover:bg-[var(--surface-hover)]"
+              >
+                Next
+              </Link>
+            ) : null}
+          </div>
         </div>
       </section>
 

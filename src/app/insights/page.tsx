@@ -13,22 +13,26 @@ const articleMeta = [
   {
     category: "Featured Analysis",
     readTime: "6 min read",
-    imageLabel: "Dummy editorial image",
+    imageLabel: "Featured editorial",
+    imageSrc: "/images/insights-hero.svg",
   },
   {
     category: "Compliance Briefing",
     readTime: "5 min read",
-    imageLabel: "Dummy compliance image",
+    imageLabel: "Compliance briefing",
+    imageSrc: "/images/service-compliance.svg",
   },
   {
     category: "Board Update",
     readTime: "4 min read",
-    imageLabel: "Dummy governance image",
+    imageLabel: "Board update",
+    imageSrc: "/images/service-advisory.svg",
   },
   {
     category: "Commercial Insight",
     readTime: "5 min read",
-    imageLabel: "Dummy contracts image",
+    imageLabel: "Commercial insight",
+    imageSrc: "/images/service-transactions.svg",
   },
 ];
 
@@ -78,18 +82,22 @@ export default function InsightsPage() {
         </div>
 
         <div className="rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[0_20px_60px_var(--shadow-color)]">
-          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)] bg-[linear-gradient(135deg,rgba(201,168,111,0.18),rgba(19,27,38,0.78))]">
-            <div className="aspect-[4/5] w-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.18))]" />
+          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)]">
+            <img
+              src="/images/insights-hero.svg"
+              alt="Insights editorial hero"
+              className="aspect-[4/5] w-full object-cover"
+            />
             <div className="absolute inset-x-5 top-5 rounded-full border border-white/15 bg-black/25 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/80 backdrop-blur">
-              Dummy Editorial Image
+              Editorial Feature
             </div>
             <div className="absolute inset-x-5 bottom-5 rounded-[1.5rem] border border-white/10 bg-black/35 p-5 backdrop-blur">
               <p className="text-xs uppercase tracking-[0.24em] text-white/70">
-                Editorial Layout Placeholder
+                Legal Publication
               </p>
               <p className="mt-3 max-w-sm text-sm leading-7 text-white/85">
-                Replace this visual block with a branded insights banner,
-                article photography, or a custom campaign image later.
+                Commentary, briefings, and timely perspectives presented with a
+                stronger editorial visual.
               </p>
             </div>
           </div>
@@ -98,8 +106,12 @@ export default function InsightsPage() {
 
       <section className="py-8">
         <article className="grid gap-6 rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_20px_50px_var(--shadow-color)] lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
-          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)] bg-[linear-gradient(140deg,rgba(201,168,111,0.18),rgba(16,25,36,0.78))]">
-            <div className="aspect-[4/3] w-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.18))]" />
+          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)]">
+            <img
+              src={articleMeta[0].imageSrc}
+              alt={featuredPost.title}
+              className="aspect-[4/3] w-full object-cover"
+            />
             <div className="absolute inset-5 flex items-end">
               <div className="rounded-[1.35rem] border border-white/10 bg-black/30 px-5 py-4 backdrop-blur">
                 <p className="text-xs uppercase tracking-[0.24em] text-white/70">
@@ -177,8 +189,14 @@ export default function InsightsPage() {
               key={post.slug}
               className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_20px_50px_var(--shadow-color)]"
             >
-              <div className="relative overflow-hidden rounded-[1.4rem] border border-[var(--accent-border)] bg-[linear-gradient(135deg,rgba(201,168,111,0.18),rgba(17,25,36,0.76))]">
-                <div className="aspect-[4/3] w-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.18))]" />
+              <div className="relative overflow-hidden rounded-[1.4rem] border border-[var(--accent-border)]">
+                <img
+                  src={
+                    articleMeta[index + 1]?.imageSrc ?? "/images/insights-hero.svg"
+                  }
+                  alt={post.title}
+                  className="aspect-[4/3] w-full object-cover"
+                />
                 <div className="absolute inset-x-4 bottom-4 rounded-[1.15rem] border border-white/10 bg-black/30 px-4 py-3 backdrop-blur">
                   <p className="text-xs uppercase tracking-[0.24em] text-white/70">
                     {articleMeta[index + 1]?.imageLabel ?? "Dummy article image"}

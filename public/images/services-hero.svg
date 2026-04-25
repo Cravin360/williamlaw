@@ -1,0 +1,26 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1500" fill="#111827"/>
+  <rect x="72" y="72" width="1056" height="1356" rx="48" fill="url(#bg)"/>
+  <rect x="146" y="170" width="430" height="530" rx="36" fill="#1F2937" fill-opacity="0.8"/>
+  <rect x="626" y="170" width="430" height="250" rx="36" fill="#F3E5C7" fill-opacity="0.18"/>
+  <rect x="626" y="450" width="430" height="250" rx="36" fill="#0F172A" fill-opacity="0.6"/>
+  <rect x="146" y="758" width="910" height="116" rx="28" fill="#0F172A" fill-opacity="0.7"/>
+  <rect x="146" y="922" width="910" height="330" rx="36" fill="#F8FAFC" fill-opacity="0.08"/>
+  <circle cx="935" cy="1140" r="158" fill="#C9A86F" fill-opacity="0.24"/>
+  <circle cx="845" cy="1038" r="72" fill="#F8FAFC" fill-opacity="0.12"/>
+  <path d="M210 1260C328 1094 460 1008 606 1002C752 996 896 1076 1038 1244" stroke="#F8FAFC" stroke-opacity="0.18" stroke-width="22" stroke-linecap="round"/>
+  <rect x="206" y="242" width="310" height="36" rx="18" fill="#F8FAFC" fill-opacity="0.78"/>
+  <rect x="206" y="304" width="260" height="24" rx="12" fill="#F8FAFC" fill-opacity="0.38"/>
+  <rect x="206" y="350" width="220" height="24" rx="12" fill="#F8FAFC" fill-opacity="0.24"/>
+  <rect x="206" y="806" width="222" height="24" rx="12" fill="#F8FAFC" fill-opacity="0.65"/>
+  <rect x="206" y="970" width="312" height="28" rx="14" fill="#F8FAFC" fill-opacity="0.72"/>
+  <rect x="206" y="1022" width="468" height="18" rx="9" fill="#F8FAFC" fill-opacity="0.28"/>
+  <rect x="206" y="1060" width="410" height="18" rx="9" fill="#F8FAFC" fill-opacity="0.22"/>
+  <defs>
+    <linearGradient id="bg" x1="146" y1="106" x2="1038" y2="1364" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E293B"/>
+      <stop offset="0.5" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+</svg>

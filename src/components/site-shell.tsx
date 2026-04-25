@@ -21,7 +21,7 @@ export function SiteShell({ children }: SiteShellProps) {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_var(--shell-radial),_transparent_36%),linear-gradient(180deg,_var(--shell-gradient-start)_0%,_var(--shell-gradient-mid)_44%,_var(--shell-gradient-end)_100%)] text-[var(--foreground)] transition-colors">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-5 sm:px-8 lg:px-12">
-        <header className="sticky top-4 z-20 mb-10 rounded-[2rem] border border-[var(--accent-border)] bg-[var(--surface-header)] px-5 py-4 shadow-[0_18px_45px_var(--shadow-color)] backdrop-blur lg:rounded-full">
+        <header className="sticky top-4 z-20 mb-10">
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-4">
               <Link href="/" className="flex items-center gap-3">
@@ -114,7 +114,7 @@ export function SiteShell({ children }: SiteShellProps) {
                     {company.name}
                   </p>
                   <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                    Attonery at Law
+                    Attorney at Law
                   </p>
                 </div>
               </div>

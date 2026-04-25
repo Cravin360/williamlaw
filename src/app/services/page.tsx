@@ -9,8 +9,9 @@ const serviceDetails = [
     title: "Corporate Advisory",
     summary:
       "Ongoing counsel for governance, board decisions, restructuring, and day-to-day legal strategy.",
-    imageLabel: "Dummy boardroom image",
+    imageLabel: "Corporate advisory",
     imageCaption: "Board advisory, governance planning, and leadership counsel",
+    imageSrc: "/images/service-advisory.svg",
   },
   {
     id: "transactions",
@@ -18,8 +19,9 @@ const serviceDetails = [
     title: "Transactions",
     summary:
       "Support for fundraising, M&A, commercial contracts, and strategic expansion with practical deal execution.",
-    imageLabel: "Dummy transaction image",
+    imageLabel: "Transactions",
     imageCaption: "Structured deal support for growth, investment, and expansion",
+    imageSrc: "/images/service-transactions.svg",
   },
   {
     id: "regulatory-readiness",
@@ -27,8 +29,9 @@ const serviceDetails = [
     title: "Regulatory Readiness",
     summary:
       "Risk frameworks for privacy, AI, licensing, and operational compliance across changing business environments.",
-    imageLabel: "Dummy compliance image",
+    imageLabel: "Regulatory readiness",
     imageCaption: "Compliance systems designed for operational resilience",
+    imageSrc: "/images/service-compliance.svg",
   },
   {
     id: "dispute-prevention",
@@ -36,8 +39,9 @@ const serviceDetails = [
     title: "Dispute Prevention",
     summary:
       "Preventive reviews, contract structure, and escalation planning to reduce exposure before conflict emerges.",
-    imageLabel: "Dummy dispute image",
+    imageLabel: "Dispute prevention",
     imageCaption: "Early risk control and dispute-sensitive planning",
+    imageSrc: "/images/service-disputes.svg",
   },
 ];
 
@@ -77,18 +81,22 @@ export default function ServicesPage() {
         </div>
 
         <div className="rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[0_20px_60px_var(--shadow-color)]">
-          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)] bg-[linear-gradient(135deg,rgba(201,168,111,0.18),rgba(19,27,38,0.75))]">
-            <div className="aspect-[4/5] w-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.18))]" />
+          <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)]">
+            <img
+              src="/images/services-hero.svg"
+              alt="Services overview"
+              className="aspect-[4/5] w-full object-cover"
+            />
             <div className="absolute inset-x-5 top-5 rounded-full border border-white/15 bg-black/25 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/80 backdrop-blur">
-              Dummy Hero Image
+              Services Overview
             </div>
             <div className="absolute inset-x-5 bottom-5 rounded-[1.5rem] border border-white/10 bg-black/35 p-5 backdrop-blur">
               <p className="text-xs uppercase tracking-[0.24em] text-white/70">
-                Premium Layout Placeholder
+                Senior Legal Support
               </p>
               <p className="mt-3 max-w-sm text-sm leading-7 text-white/85">
-                Replace this panel with a real services banner, team image, or
-                branded photography when assets are available.
+                Corporate, commercial, regulatory, and risk advisory presented
+                through a stronger visual hero.
               </p>
             </div>
           </div>
@@ -128,8 +136,12 @@ export default function ServicesPage() {
               className="grid gap-6 rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_20px_50px_var(--shadow-color)] lg:grid-cols-2 lg:p-8"
             >
               <div className={reverseLayout ? "lg:order-2" : undefined}>
-                <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)] bg-[linear-gradient(140deg,rgba(201,168,111,0.18),rgba(16,25,36,0.78))]">
-                  <div className="aspect-[4/3] w-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.18))]" />
+                <div className="relative overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)]">
+                  <img
+                    src={detail.imageSrc}
+                    alt={detail.title}
+                    className="aspect-[4/3] w-full object-cover"
+                  />
                   <div className="absolute inset-5 flex items-end">
                     <div className="rounded-[1.35rem] border border-white/10 bg-black/30 px-5 py-4 backdrop-blur">
                       <p className="text-xs uppercase tracking-[0.24em] text-white/70">

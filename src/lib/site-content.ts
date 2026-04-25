@@ -1,11 +1,11 @@
 export const company = {
   name: "William & Dexter",
-  tagline: "Strategic counsel for regulated growth.",
+  tagline: "Attorney at Law",
   description:
     "A modern legal practice built for founders, investors, and operators navigating risk, transactions, and expansion.",
   email: "hello@williamlaw.co",
   phone: "+1 (555) 240-0198",
-  address: "120 Park Avenue, Suite 800, New York, NY",
+  address: "120 Holborn, Suite 800, London, UK",
 };
 
 export const navigation = [
